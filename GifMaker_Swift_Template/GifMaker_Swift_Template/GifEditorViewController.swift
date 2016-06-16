@@ -61,9 +61,39 @@ class GifEditorViewController: UIViewController {
     
     func getKeyboardHeight(notification: NSNotification) -> CGFloat {
         let userInfo = notification.userInfo!
-        let keyboardFrameEnd = userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue
-        let keyboardFrameEndRect = keyboardFrameEnd.CGRectValue()
-        return keyboardFrameEndRect.size.height
+        let keyboardSize = userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue
+        return keyboardSize.CGRectValue().height
+    }
+    
+    @IBAction func presentPreview(sender: AnyObject) {
+        if let gif = gif {
+            // Create Gif Preview View Controller
+            let previewVC = self.storyboard?.instantiateViewControllerWithIdentifier("PreviewViewController") as! PreviewViewController
+            
+            // Set gif caption
+            gif.caption = captionTextField.text
+        
+            // Create new instance of Regift
+            var regift = Regift.init(sourceFileURL: gif.videoURL!, destinationFileURL: nil, frameCount: frameCount, delayTime: delayTime, loopCount: loopCount)
+            
+            // Set font for caption
+            let captionFont = captionTextField.font
+            
+            // Create gif as NSURL
+            let gifURL = regift.createGif(caption: gif.caption, font: captionFont)
+            
+            // Create new instance of Gif object
+            let newGif = Gif(GifUrl: gifURL!, videoURL: gif.videoURL!, caption: gif.caption)
+            
+            // Set gif on previewVC
+            previewVC.gif = newGif
+            
+            // Push previewVC ontop of nav stack
+            self.navigationController?.pushViewController(previewVC, animated: true)
+        }
+        
+        
+        //
     }
 }
 
