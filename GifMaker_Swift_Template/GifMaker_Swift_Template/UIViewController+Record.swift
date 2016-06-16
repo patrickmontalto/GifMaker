@@ -63,13 +63,15 @@ extension UIViewController: UIImagePickerControllerDelegate, UINavigationControl
     func convertVideoToGIF(videoURL: NSURL) {
         let regift = Regift(sourceFileURL: videoURL, destinationFileURL: nil, frameCount: frameCount, delayTime: delayTime, loopCount: loopCount)
         let gifURL = regift.createGif()
+        let gif = Gif(GifUrl: gifURL!, videoURL: videoURL, caption: nil)
+        displayGIF(gif)
     }
     
-    func displayGIF(url: NSURL) {
+    func displayGIF(gif: Gif) {
         // Instantiate gif editor view controller
         let gifEditorVC = storyboard?.instantiateViewControllerWithIdentifier("GifEditorViewController") as! GifEditorViewController
         // Set gif url
-        gifEditorVC.gifURL = url
+        gifEditorVC.gif = gif
         // Push ontop of Navigation stack
         navigationController?.pushViewController(gifEditorVC, animated: true)
         
