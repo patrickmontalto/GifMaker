@@ -15,11 +15,12 @@
 		D27082121D11F1F600AF1935 /* Gif.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27082111D11F1F600AF1935 /* Gif.swift */; };
 		D27082141D145F4000AF1935 /* SavedGifsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27082131D145F4000AF1935 /* SavedGifsViewController.swift */; };
 		D27082161D14620500AF1935 /* GifCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27082151D14620500AF1935 /* GifCell.swift */; };
+		D270821A1D14744200AF1935 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27082191D14744200AF1935 /* DetailViewController.swift */; };
+		D270821C1D14788D00AF1935 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D270821B1D14788D00AF1935 /* LaunchScreen.storyboard */; };
 		EDDFC4DC1CE261A600A586CA /* tinaFeyHiFive.gif in Resources */ = {isa = PBXBuildFile; fileRef = EDDFC4DB1CE261A600A586CA /* tinaFeyHiFive.gif */; };
 		EDDFC4DE1CE261C400A586CA /* hotlineBling.gif in Resources */ = {isa = PBXBuildFile; fileRef = EDDFC4DD1CE261C400A586CA /* hotlineBling.gif */; };
 		EDFAA8ED1CDA99A500D2CB08 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFAA8EC1CDA99A500D2CB08 /* AppDelegate.swift */; };
 		EDFAA8F41CDA99A500D2CB08 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EDFAA8F31CDA99A500D2CB08 /* Assets.xcassets */; };
-		EDFAA8F71CDA99A500D2CB08 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EDFAA8F51CDA99A500D2CB08 /* LaunchScreen.storyboard */; };
 		EDFAA9021CDA99A500D2CB08 /* GifMaker_Swift_TemplateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFAA9011CDA99A500D2CB08 /* GifMaker_Swift_TemplateTests.swift */; };
 		EDFAA90D1CDA99A500D2CB08 /* GifMaker_Swift_TemplateUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFAA90C1CDA99A500D2CB08 /* GifMaker_Swift_TemplateUITests.swift */; };
 		EDFAA91B1CDA99F200D2CB08 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EDFAA91A1CDA99F200D2CB08 /* Main.storyboard */; };
@@ -54,12 +55,13 @@
 		D27082111D11F1F600AF1935 /* Gif.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Gif.swift; sourceTree = "<group>"; };
 		D27082131D145F4000AF1935 /* SavedGifsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavedGifsViewController.swift; sourceTree = "<group>"; };
 		D27082151D14620500AF1935 /* GifCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GifCell.swift; sourceTree = "<group>"; };
+		D27082191D14744200AF1935 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		D270821B1D14788D00AF1935 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EDDFC4DB1CE261A600A586CA /* tinaFeyHiFive.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = tinaFeyHiFive.gif; sourceTree = "<group>"; };
 		EDDFC4DD1CE261C400A586CA /* hotlineBling.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = hotlineBling.gif; sourceTree = "<group>"; };
 		EDFAA8E91CDA99A500D2CB08 /* GifMaker_Swift_Template.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GifMaker_Swift_Template.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDFAA8EC1CDA99A500D2CB08 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EDFAA8F31CDA99A500D2CB08 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		EDFAA8F61CDA99A500D2CB08 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EDFAA8F81CDA99A500D2CB08 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EDFAA8FD1CDA99A500D2CB08 /* GifMaker_Swift_TemplateTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GifMaker_Swift_TemplateTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDFAA9011CDA99A500D2CB08 /* GifMaker_Swift_TemplateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifMaker_Swift_TemplateTests.swift; sourceTree = "<group>"; };
@@ -141,16 +143,17 @@
 				EDFAA8EC1CDA99A500D2CB08 /* AppDelegate.swift */,
 				EDFAA8F31CDA99A500D2CB08 /* Assets.xcassets */,
 				EDFAA91A1CDA99F200D2CB08 /* Main.storyboard */,
-				EDFAA8F51CDA99A500D2CB08 /* LaunchScreen.storyboard */,
+				D270821B1D14788D00AF1935 /* LaunchScreen.storyboard */,
 				EDFAA8F81CDA99A500D2CB08 /* Info.plist */,
 				EDDFC4DB1CE261A600A586CA /* tinaFeyHiFive.gif */,
 				EDDFC4DD1CE261C400A586CA /* hotlineBling.gif */,
 				D270820F1D11E66200AF1935 /* UIImage+GIF.swift */,
+				D27082191D14744200AF1935 /* DetailViewController.swift */,
 				D270820D1D11E10A00AF1935 /* UIViewController+Record.swift */,
-				D27082071D11DEBB00AF1935 /* WelcomeViewController.swift */,
 				D27082091D11DEDD00AF1935 /* GifEditorViewController.swift */,
 				D270820B1D11DEF500AF1935 /* PreviewViewController.swift */,
 				D27082131D145F4000AF1935 /* SavedGifsViewController.swift */,
+				D27082071D11DEBB00AF1935 /* WelcomeViewController.swift */,
 				D27082181D146B4E00AF1935 /* Model */,
 				D27082171D14625D00AF1935 /* View */,
 			);
@@ -293,7 +296,7 @@
 				EDDFC4DC1CE261A600A586CA /* tinaFeyHiFive.gif in Resources */,
 				EDDFC4DE1CE261C400A586CA /* hotlineBling.gif in Resources */,
 				EDFAA91B1CDA99F200D2CB08 /* Main.storyboard in Resources */,
-				EDFAA8F71CDA99A500D2CB08 /* LaunchScreen.storyboard in Resources */,
+				D270821C1D14788D00AF1935 /* LaunchScreen.storyboard in Resources */,
 				EDFAA8F41CDA99A500D2CB08 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -319,6 +322,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D270821A1D14744200AF1935 /* DetailViewController.swift in Sources */,
 				EDFAA9201CDA9C3100D2CB08 /* Regift.swift in Sources */,
 				D27082141D145F4000AF1935 /* SavedGifsViewController.swift in Sources */,
 				D27082161D14620500AF1935 /* GifCell.swift in Sources */,
@@ -364,17 +368,6 @@
 			targetProxy = EDFAA9091CDA99A500D2CB08 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		EDFAA8F51CDA99A500D2CB08 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				EDFAA8F61CDA99A500D2CB08 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		EDFAA90F1CDA99A500D2CB08 /* Debug */ = {

@@ -29,6 +29,9 @@ class SavedGifsViewController: UIViewController, PreviewViewControllerDelegate {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        // Navigation Bar
+        title = "My Collection"
+        self.navigationController?.navigationBar.hidden = savedGifs.count == 0
         collectionView.reloadData()
         
     }
@@ -44,6 +47,14 @@ class SavedGifsViewController: UIViewController, PreviewViewControllerDelegate {
             NSKeyedArchiver.archiveRootObject(savedGifs, toFile: gifsFilePath)
         }
         
+    }
+    
+    // MARK: - Show Welcome View Controller
+    func showWelcomeVC() {
+        if NSUserDefaults.standardUserDefaults().boolForKey("UserDidSeeWelcomeViewScreen") != true {
+            let welcomeVC = self.storyboard?.instantiateViewControllerWithIdentifier("WelcomeViewController") as! WelcomeViewController
+            navigationController?.presentViewController(welcomeVC, animated: true, completion: nil)
+        }
     }
 }
 
@@ -61,6 +72,14 @@ extension SavedGifsViewController: UICollectionViewDelegate, UICollectionViewDat
         cell.configureForGif(gif)
         
         return cell
+    }
+    
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        let detailVC = self.storyboard?.instantiateViewControllerWithIdentifier("DetailViewController") as! DetailViewController
+        detailVC.gif = savedGifs[indexPath.item]
+        
+        detailVC.modalPresentationStyle = UIModalPresentationStyle.OverCurrentContext
+        presentViewController(detailVC, animated: true, completion: nil)
     }
     
     // MARK: CollectionView Flow Layout: 2 Columns of Cells

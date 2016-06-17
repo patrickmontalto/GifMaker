@@ -19,6 +19,8 @@ class WelcomeViewController: UIViewController {
         super.viewWillAppear(animated)
         defaultGifImageView.image = UIImage.gifWithName("tinaFeyHiFive")
         
+        // User did see welcome view screen
+        NSUserDefaults.standardUserDefaults().setBool(true, forKey: "UserDidSeeWelcomeViewScreen")
         
     }
 }
