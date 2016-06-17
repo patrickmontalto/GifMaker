@@ -88,6 +88,9 @@ class GifEditorViewController: UIViewController {
             // Set gif on previewVC
             previewVC.gif = newGif
             
+            // Set delegate on previewVC to SavedGifsViewController
+            previewVC.delegate = self.navigationController?.viewControllers.first as! SavedGifsViewController
+            
             // Push previewVC ontop of nav stack
             self.navigationController?.pushViewController(previewVC, animated: true)
         }

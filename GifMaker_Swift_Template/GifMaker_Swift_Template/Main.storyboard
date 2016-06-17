@@ -17,7 +17,7 @@
                         <color key="tintColor" red="1" green="0.20000000000000001" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="aXC-Xw-CZL" kind="relationship" relationship="rootViewController" id="O6U-Pr-xGP"/>
+                        <segue destination="upq-jB-3dI" kind="relationship" relationship="rootViewController" id="dYt-uH-zhr"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DM2-vZ-vXy" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -47,7 +47,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="GifCell" id="2ru-Ed-G6h" customClass="GifCell">
-                                        <rect key="frame" x="8" y="8" width="177" height="177"/>
+                                        <rect key="frame" x="8" y="72" width="177" height="177"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="177" height="177"/>
@@ -81,7 +81,7 @@
                                             </mask>
                                         </variation>
                                         <connections>
-                                            <outlet property="gifImageView" destination="sHD-OW-keS" id="VAe-LJ-h3J"/>
+                                            <outlet property="gifImageView" destination="sHD-OW-keS" id="sqa-AJ-Hwc"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -97,6 +97,9 @@
                                     <constraint firstAttribute="height" constant="60" id="nD5-xT-Xdf"/>
                                 </constraints>
                                 <state key="normal" image="createButton"/>
+                                <connections>
+                                    <action selector="presentVideoOptions" destination="upq-jB-3dI" eventType="touchUpInside" id="pxt-YO-pDB"/>
+                                </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="rBY-mr-O59">
                                 <rect key="frame" x="20" y="238" width="560" height="124"/>
@@ -157,6 +160,10 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="My Collection" id="7HF-Yq-Lti"/>
+                    <connections>
+                        <outlet property="collectionView" destination="hbv-Kk-KXX" id="Kf4-FO-SNw"/>
+                        <outlet property="emptyView" destination="rBY-mr-O59" id="E5S-4S-uXk"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1mO-R1-5Re" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

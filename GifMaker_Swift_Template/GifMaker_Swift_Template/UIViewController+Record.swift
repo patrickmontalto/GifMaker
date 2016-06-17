@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import MobileCoreServices
+import AVFoundation
 
 // Constants for Regift
 let frameCount = 16
@@ -94,12 +95,10 @@ extension UIViewController: UIImagePickerControllerDelegate, UINavigationControl
                 duration = endTime - startTime
 
             }
-            // TODO: Crop video to square
-            
             // Dismiss view controller
             dismissViewControllerAnimated(true, completion: nil)
-            // Convert video to GIF
-            convertVideoToGIF(rawVideoURL, start: startTime, duration: duration)
+            // Crop video to square & convert video to GIF
+            cropVideoToSquare(rawVideoURL, start: startTime, duration: duration)
         }
         
         
@@ -133,6 +132,75 @@ extension UIViewController: UIImagePickerControllerDelegate, UINavigationControl
         // Push ontop of Navigation stack
         navigationController?.pushViewController(gifEditorVC, animated: true)
         
+    }
+    
+    // MARK: Crop Video to Square
+    func cropVideoToSquare(rawVideoURL: NSURL, start: Float?, duration: Float?) {
+        // Create the AVAsset and AVAssetTrack
+        let videoAsset = AVAsset(URL: rawVideoURL)
+        let videoTrack = videoAsset.tracksWithMediaType(AVMediaTypeVideo)[0]
+        
+        // Crop to Square
+        let videoComposition = AVMutableVideoComposition()
+        videoComposition.renderSize = CGSizeMake(videoTrack.naturalSize.height, videoTrack.naturalSize.height)
+        videoComposition.frameDuration = CMTimeMake(1, 30)
+        
+        let instruction = AVMutableVideoCompositionInstruction()
+        instruction.timeRange = CMTimeRangeMake(kCMTimeZero, CMTimeMakeWithSeconds(60, 30))
+        
+        // Rotate to Portrait
+        let transformer = AVMutableVideoCompositionLayerInstruction(assetTrack: videoTrack)
+        let t1 = CGAffineTransformMakeTranslation(videoTrack.naturalSize.height, -(videoTrack.naturalSize.width - videoTrack.naturalSize.height)/2)
+        let t2 = CGAffineTransformRotate(t1, CGFloat(M_PI_2))
+        
+        let finalTransform = t2
+        transformer.setTransform(finalTransform, atTime: kCMTimeZero)
+        instruction.layerInstructions = [transformer]
+        videoComposition.instructions = [instruction]
+        
+        // Export
+        guard let exporter = AVAssetExportSession(asset: videoAsset, presetName: AVAssetExportPresetHighestQuality) else {
+            print("Error exporting video")
+            return
+        }
+        exporter.videoComposition = videoComposition
+        
+        let path = createPath()
+        exporter.outputURL = NSURL.fileURLWithPath(path)
+        exporter.outputFileType = AVFileTypeQuickTimeMovie
+        
+        var croppedURL: NSURL?
+        
+        exporter.exportAsynchronouslyWithCompletionHandler { () -> Void in
+            croppedURL = exporter.outputURL
+            self.convertVideoToGIF(croppedURL!, start: start, duration: duration)
+        }
+        
+        
+    }
+    
+    func createPath() -> String {
+        let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)
+        let documentsDirectory = paths[0]
+        let manager = NSFileManager.defaultManager()
+        var outputURL = (documentsDirectory as NSString).stringByAppendingPathComponent("output")
+        do {
+            try manager.createDirectoryAtPath(outputURL, withIntermediateDirectories: true, attributes: nil)
+        } catch let error as NSError {
+            print(error)
+            print("An error occurred creating directory at path.")
+        }
+        outputURL = (outputURL as NSString).stringByAppendingPathComponent("output.mov")
+        
+        // Remove existing file
+        do {
+           try manager.removeItemAtPath(outputURL)
+        } catch let error as NSError {
+            print(error)
+            print("An error occurred removing item at path")
+        }
+        
+        return outputURL
     }
 }
 
